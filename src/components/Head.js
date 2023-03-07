@@ -1,7 +1,7 @@
 import React from "react";
 const Header = () => {
   return (
-    <div className="grid grid-flow-col p-2 m-2 h-12 shadow-lg">
+    <div className="grid grid-flow-col p-2 m-2 h-12 shadow-lg w-full">
       <div className="flex col-span-1">
         <img
           className="h-6"
