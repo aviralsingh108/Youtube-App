@@ -1,28 +1,33 @@
 import React from "react";
 const Header = () => {
   return (
-    <div className="grid grid-flow-col p-2 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-2 m-2 h-12 shadow-lg">
       <div className="flex col-span-1">
         <img
-          className="h-10"
+          className="h-6"
           alt="menu"
           src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg"
         />
         <img
-          className="h-10"
+          className="h-24 -my-9"
           alt="logo"
-          src="https://w7.pngwing.com/pngs/674/324/png-transparent-youtube-logo-music-video-computer-icons-youtube-logo-text-trademark-logo.png"
+          src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
         />
       </div>
-      <div className="col-span-10">
-        <input type="text" />
-        <button>Search</button>
+      <div className="col-span-10 mx-40 -my-2">
+        <input
+          className="w-1/2  p-2 border border-gray-400 ml-5 rounded-l-full"
+          type="text"
+        />
+        <button className=" px-5 py-2 border border-gray-400 rounded-r-full">
+          🔍
+        </button>
       </div>
-      <div className="flex col-span-1">
+      <div className="flex col-span-1 -my-2">
         <img
-          className="h-12"
+          className="h-9"
           alt="user-icon"
-          src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
         />
       </div>
     </div>
