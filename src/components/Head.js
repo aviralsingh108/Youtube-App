@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,11 +19,13 @@ const Header = () => {
             return toggleMenuHandler();
           }}
         />
+        {/* <Link to={"/"}> */}
         <img
           className="h-24 -my-9"
           alt="logo"
           src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
         />
+        {/* </Link> */}
       </div>
       <div className="col-span-10 mx-40 -my-2">
         <input
