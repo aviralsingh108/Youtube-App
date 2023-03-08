@@ -5,7 +5,7 @@ const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!isMenuOpen) return null;
   return (
-    <div className="flex flex-col w-44 shadow-lg">
+    <div className="flex flex-col min-w-max w-60 shadow-lg">
       <div className="border-b-2 mx-2 my-2">
         <ul>
           <li className="p-2">🏠 Home</li>
