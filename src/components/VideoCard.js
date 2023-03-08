@@ -1,7 +1,32 @@
 import React from "react";
 
-const VideoCard = () => {
-  return <div>VideoCard</div>;
+const VideoCard = ({ info }) => {
+  return (
+    <div className="w-72 m-2 p-2">
+      <div>
+        <img
+          className="rounded-2xl p-2"
+          alt="thumbnail"
+          src={info.snippet.thumbnails.medium.url}
+        />
+      </div>
+      <div className="flex ">
+        <img alt="channel-logo" src="" />
+        <h3>{info.snippet.title}</h3>
+      </div>
+      <div className="ml-16">
+        <div className="flex">
+          <h6 className="text-gray-500">{info.snippet.channelTitle}</h6>
+        </div>
+        <div className="flex ">
+          <h6 className="text-gray-500">
+            {info.statistics.viewCount / 100000}lakh views &#8226;
+          </h6>
+          {/* <h6 className="text-gray-500">{info.snippet.publishedAt}</h6> */}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default VideoCard;

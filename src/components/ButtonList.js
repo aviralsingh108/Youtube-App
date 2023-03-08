@@ -7,7 +7,7 @@ const list = [
   "News",
   "Stocks",
   "Ghazal",
-  "Computer PRogramming",
+  "Programming",
   "Thoughts",
   "Holi",
   "Drones",
