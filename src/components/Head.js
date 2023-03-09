@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../utils/Constants";
+import store from "../utils/store";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const dispatch = useDispatch();
+
+  const searchCache = useSelector((store) => store.search);
   useEffect(() => {
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
     }, 200);
 
     return () => {
@@ -23,9 +32,13 @@ const Header = () => {
     const json = await data.json();
     console.log(json);
     setSuggestions(json[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
 
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
@@ -55,20 +68,24 @@ const Header = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
           />
           <button className=" px-5 py-2 border border-gray-400 rounded-r-full">
             🔍
           </button>
         </div>
-        <div className="fixed bg-white my-1 py-2 px-4 ml-6 rounded-lg w-[29.8rem] shadow-lg border border-gray-100">
-          <ul>
-            {suggestions.map((suggestion) => (
-              <li key={suggestion} className="hover:bg-gray-100">
-                🔍 {suggestion}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {showSuggestions && (
+          <div className="absolute bg-white my-1 py-2 px-4 ml-6 rounded-lg w-[29.8rem] shadow-lg border border-gray-100">
+            <ul>
+              {suggestions.map((suggestion) => (
+                <li key={suggestion} className="hover:bg-gray-100">
+                  🔍 {suggestion}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="flex col-span-1 -my-2">
