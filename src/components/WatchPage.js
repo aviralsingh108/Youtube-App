@@ -5,16 +5,15 @@ import { closeMenu } from "../utils/appSlice";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
   return (
-    <div>
+    <div className="px-5">
       <iframe
-        width="560"
-        height="315"
+        width="1200"
+        height="600"
         src={"https://www.youtube.com/embed/" + searchParams.get("v")}
         title="YouTube video player"
         frameBorder="0"

@@ -2,19 +2,19 @@ import React from "react";
 
 const VideoCard = ({ info }) => {
   return (
-    <div className="w-72 m-2 p-2">
+    <div className="w-72  m-2 p-2 mb-10 shadow-md">
       <div>
         <img
-          className="rounded-2xl p-2"
+          className="rounded-2xl p-1"
           alt="thumbnail"
           src={info.snippet.thumbnails.medium.url}
         />
       </div>
       <div className="flex ">
-        <img alt="channel-logo" src="" />
-        <h3>{info.snippet.title}</h3>
+        {/* <img alt="channel-logo" src="" /> */}
+        <h4 className="font-bold">{info.snippet.title}</h4>
       </div>
-      <div className="ml-16">
+      <div>
         <div className="flex">
           <h6 className="text-gray-500">{info.snippet.channelTitle}</h6>
         </div>
