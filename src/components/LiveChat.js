@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addMessage } from "../utils/chatSlice";
 import ChatMessage from "./ChatMessage";
 
 const LiveChat = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    const i = setTimeout(() => {}, 2000);
+    const i = setInterval(() => {
+      dispatch(addMessage({ name: "Aviral", message: "Adding some message" }));
+    }, 2000);
     return () => clearTimeout(i);
   }, []);
   return (
